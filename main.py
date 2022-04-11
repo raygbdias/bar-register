@@ -1,12 +1,4 @@
-from sre_parse import CATEGORIES
-from barback import create_db
-import json
-
-try:
-    with open ('bar.json', 'r') as db_json:
-        db = json.load(db_json)
-except FileNotFoundError:
-    create_db()
+from query import Query
 
 while True:
     print('_'*50)
@@ -15,40 +7,9 @@ while True:
 
     option = input('Choose a number from the list: ')
     if option == '1':
-        print(db)
+        print('hey')
     elif option == '2':
-        print(f"{'-'*50} \ncategories:\n{'-'*50}")
-        i = 1
-        #visualizacao de categorias
-        for category in db:
-            print(f"{i} - {category}")   
-            i += 1
+        Query().search()
 
-        option = input('\nChoose a category: ')
-        if option == '1':
-            print(f"{'-'*50} \ncategories:\n{'-'*50}")
-            for category in db['spirits']:
-                print(category)
-            option = input('\nChoose your poison:')
-            if option == '1':
-                print(db['spirits']['vodka'])
-            elif option == '2':
-                print(db['spirits']['gin'])
-        elif option == '2':
-            print(f"{'-'*50} \ncategories:\n{'-'*50}")
-            for category in db['liquor']:
-                print(category)
-            option = input('\nChoose your poison:')
-            if option == '1':
-                print(db['spirits']['vodka'])
-            elif option == '2':
-                print(db)
-        elif option == '3':
-            print(f"{'-'*50} \ncategories:\n{'-'*50}")
-            for category in db['non-alcoholic']:
-                print(category)
-            option = input('\nChoose your poison:')
-            if option == '1':
-                print(db['spirits']['vodka'])
-            elif option == '2':
-                print(db)
+    elif option == '3':
+        option = input('What is that you want to add? ')
